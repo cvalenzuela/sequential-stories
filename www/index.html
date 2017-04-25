@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <title>NN Plots</title>
+  <script type="text/javascript" src="libraries/jquery-3.2.1.min.js"></script>
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- get data from the server  -->
+  <h5>NN Plots</h5>
+  <button id="data">Get data</button>
+  <div id="info"></div>
+  <br />
+
+  <!-- take a photo an display it -->
+  <button id="takePhoto" onclick="useCamara();">Take a Photo</button>
+  <button id="uploadPhoto" onclick="getImage();">Use a Photo</button>
+  <img src="" id="photo"/>
+  <button id="uploadPhoto" onclick="uploadPhoto();">Upload Photo</button>
+
+
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
