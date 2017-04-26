@@ -49,9 +49,10 @@ function getImage() {
 function cameraSuccess(imageData) {
   console.log("Got image")
   var photo = document.getElementById('photo');
-  //photo.src = imageData;
   imageURL = imageData;
+  photo.src = "data:image/jpeg;base64," + imageData;
 }
+
 
 // Upload image to server
 function uploadPhoto() {
