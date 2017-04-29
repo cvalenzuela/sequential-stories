@@ -1,9 +1,13 @@
+#
+# This server classifies an images and then runs a lstm network over it.
+#
+
 import os
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, jsonify
 from werkzeug import secure_filename
 from lstm import lstmText
 
-# ML stuff
+# Keras
 from keras.applications.resnet50 import ResNet50
 from keras.applications.resnet50 import preprocess_input, decode_predictions
 import numpy as np
@@ -33,12 +37,12 @@ def allowed_file(filename):
 
 @app.route("/")
 def hello():
-    return "data"
+    return "Server Running..."
 
 # process the file upload
 @app.route('/upload', methods=['POST'])
 def upload():
-    # Get the image data from the POST
+    Get the image data from the POST
     data = request.form['img']
     # This decodes it into an image
     img = Image.open(BytesIO(base64.b64decode(data)))
@@ -65,4 +69,4 @@ def upload():
     return jsonify(status='got image',prediction=data, text=generated_text, term=term)
 
 if __name__ == "__main__":
-    app.run( host=ip, port=8080, debug=False)
+    app.run(host=ip, port=8080, debug=False)
