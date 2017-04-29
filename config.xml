@@ -1,26 +1,35 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
-    </author>
-    <content src="index.html" />
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <platform name="android">
-        <allow-intent href="market:*" />
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
+<widget id="com.sequential.cvalenzuela" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cvalenzuelab.com">
+  <name>Sequential</name>
+  <description>
+    Neural Network to generate stories.
+  </description>
+  <author email="cv965@nyu.edu" href="http://cvalenzuelab.com">
+    Cristobal Valenzuela
+  </author>
+  <content src="index.html" />
+  <plugin name="cordova-plugin-whitelist" spec="1" />
+  <access origin="*" />
+  <allow-intent href="http://*/*" />
+  <allow-intent href="https://*/*" />
+  <allow-intent href="tel:*" />
+  <allow-intent href="sms:*" />
+  <allow-intent href="mailto:*" />
+  <allow-intent href="geo:*" />
+  <platform name="android">
+    <allow-intent href="market:*" />
+  </platform>
+
+  <splash src="www/img/Default@2x~universal~anyany.png" />
+  <platform name="ios">
+    <allow-intent href="itms:*" />
+    <allow-intent href="itms-apps:*" />
+    <icon src="www/img/icon/icon-60@3x.png" width="180" height="180" />
+    <icon src="www/img/icon/icon-60.png" width="60" height="60" />
+    <icon src="www/img/icon/icon-60@2x.png" width="120" height="120" />
+    <icon src="www/img/icon/icon.png" width="57" height="57" />
+    <icon src="www/img/icon/icon@2x.png" width="114" height="114" />
+    <icon src="www/img/icon/icon-small.png" width="29" height="29" />
+    <icon src="www/img/icon/icon-small@2x.png" width="58" height="58" />
+  </platform>
 </widget>

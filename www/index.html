@@ -4,25 +4,73 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-  <title>NN Plots</title>
+  <title>Sequential Story</title>
   <script type="text/javascript" src="libraries/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="libraries/typed.min.js"></script>
   <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- get data from the server  -->
-  <h5>NN Plots</h5>
-  <button id="data">Get data</button>
-  <div id="info"></div>
-  <br />
 
-  <!-- take a photo an display it -->
-  <button id="takePhoto" onclick="useCamara();">Take a Photo</button>
-  <button id="uploadPhoto" onclick="getImage();">Use a Photo</button>
-  <img src="" id="photo"/>
-  <button id="uploadPhoto" onclick="uploadPhoto();" >Upload Photo</button>
-  <br />
-  <p id="classification"></p>
+  <div id="title">
+    <h3>Sequential Story</h3>
+  </div>
+  <!-- <button id="data">Get data</button>
+  <div id="info"></div>
+  <br /> -->
+  <div id="getPhoto">
+    <button id="takePhoto" onclick="useCamara();">Take New</button>
+    <button id="uploadPhoto" onclick="getImage();">Use Existing</button>
+  </div>
+
+  <div id="imagesGrid" class="">
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage"/ id="photo1">
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo2"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo3"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo4"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo5"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo6"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo7"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage"id="photo8"/>
+    </div>
+    <div class="element">
+      <img src="img/noImage.jpg" class="gridImage" id="photo9"/>
+    </div>
+  </div>
+
+  <div id="currentImageHolder">
+    <img src="" id="currentImage"/>
+  </div>
+
+  <div id="buttons">
+    <button id="usePhoto" onclick="uploadPhoto();">Add</button>
+    <button id="removePhoto" onclick="removePhoto();">Remove</button>
+    <button id="clearAll" onclick="clearAll();">Clear All</button>
+  </div>
+
+  <div id="divider"></div>
+
+  <div id="result">
+    <h4 id="genTitle"></h4>
+    <p id="genPar"></p>
+  </div>
+
+
 
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/script.js"></script>

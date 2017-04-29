@@ -1,5 +1,149 @@
-#photo{
+
+/*
+Fonts
+*/
+
+@font-face {
+  font-family: 'bentonsans-light';
+  src: url('../fonts/bentonsans-light-webfont.woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'bentonsans-regular';
+  src: url('../fonts/bentonsans-medium-webfont.woff');
+  font-weight: normal;
+}
+
+/*
+Elements
+*/
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+button{
+  font-family: 'Helvetica';
+  margin: 10px;
+  padding: 10px;
+  border: none;
+}
+
+h3{
+  padding: 0;
+  margin: 0;
+}
+
+h4, h6{
+  font-family: 'Helvetica';
+}
+
+p{
+  font-family: 'Helvetica';
+  text-align: justify;
+}
+/*
+id
+*/
+
+#title{
+  font-family: 'bentonsans-light';
+  text-align: center;
+  background: #1b1b1b;
+  color: #ffffff;
+  padding: 35px 20px 20px 20px
+}
+
+#submit{
+  background: #27a26a;
+  border: none;
+  color: white;
+  max-width: 100px;
+}
+
+#cancel{
+  background: #b55d61;
+  border: none;
+  color: white;
+  max-width: 100px;
+}
+
+#divider{
+}
+
+#takePhoto{
+  background: rgba(247, 247, 247, 0.94)
+}
+
+#uploadPhoto{
+  background: rgba(247, 247, 247, 0.94)
+}
+
+#getPhoto{
+  text-align: center;
+}
+
+#buttons{
+  text-align: center;
+}
+
+#usePhoto{
+  background: #4ac78e;
+  color: white;
+  width: 90px;
+}
+
+#currentImageHolder{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 19vh;
+  padding: 10px;
+  height: 200px;
+  background: rgba(171, 168, 168, 0.17);
+}
+
+#currentImage{
   display: block;
   max-width: 200px;
-  margin: 20px;
+  max-height: 175px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+#result{
+  margin:25px;
+}
+
+#imagesGrid{
+  text-align: center;
+}
+
+#removePhoto{
+  background: #dcd8d8;
+}
+
+#clearAll{
+  background: #e27474;
+}
+/*
+Classes
+*/
+.element{
+  display: inline-block;
+}
+
+.element{
+  width: 100px;
+  height: 75px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.element img {
+    width: 100%;
 }

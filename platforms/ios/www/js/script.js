@@ -7,15 +7,24 @@ cvalenzuela
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var imageURL;
+var ip = 'http://172.16.220.175:8080/'
+var upload = ip + "upload";
+var id = 1;
+var currentImageHolder = null;
+var currentImage = null;
+var photo = null;
 
 // on device ready
 function onDeviceReady() {
+  currentImageHolder = document.getElementById('currentImageHolder');
+  currentImage = document.getElementById('currentImage');
+  $("#currentImageHolder").hide();
 }
 
 // Get data AJAX
 $('#data').click(function() {
   $.ajax({
-    url: 'http://172.16.223.189:8080/',
+    url: ip,
     type: 'GET',
     cache: false,
     error: function() {
@@ -47,15 +56,19 @@ function getImage() {
 
 // Display Image taken/selected
 function cameraSuccess(imageData) {
-  console.log("Got image")
-  var photo = document.getElementById('photo');
+  console.log('Got image')
   imageURL = imageData;
-  photo.src = "data:image/jpeg;base64," + imageData;
+  $("#currentImageHolder").show();
+  currentImage.src = "data:image/jpeg;base64," + imageData;
 }
-
 
 // Upload image to server
 function uploadPhoto() {
+  $("#currentImageHolder").hide();
+  currentImage.src = '#';
+  photo = document.getElementById('photo'+id);
+  photo.src = "data:image/jpeg;base64," + imageURL;
+  (id < 9) ? id++ : id = 0;
 
   var base64 = imageURL;
   var cleaned = base64.replace(/data:image\/(png|jpeg|jpg|gif);base64,/, '');
@@ -63,45 +76,40 @@ function uploadPhoto() {
     img: cleaned
   }
 
-  var url = "http://172.16.223.189:8080/upload";
-
   // send the data
-  $.post(url, data, function(response) {
-    alert('sent');
-    $('#classification').html(response.prediction[0].term)
+  $.post(upload, data, function(response) {
+    console.log(response.term)
+    $("#genTitle").text(response.term);
+    Typed.new('#genPar', {
+      strings: [response.text],
+      typeSpeed: 0
+    });
     console.log(response)
   });
-
-
-  // var imageURI = imageURL
-  //
-  // var options = new FileUploadOptions();
-  // options.fileKey="file";
-  // options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-  // options.mimeType="image/jpeg";
-  //
-  // var params = new Object();
-  // params.value1 = "test";
-  // params.value2 = "param";
-  //
-  // options.params = params;
-  // options.chunkedMode = true;
-  //
-  // var ft = new FileTransfer();
-  // ft.upload(imageURI, "http://172.16.223.189:8080/upload", win, fail, options);
-}
-
-function win(r) {
-  console.log("File Uploaded " + r.response);
-  var classification = document.getElementById('classification');
-  classification.innerHTML = r.response
-  // alert(r.response);
-}
-
-function fail(error) {
-  alert("An error has occurred: Code = " = error.code);
 }
 
 function cameraError(){
-  alert("error getting image")
+  alert("Error Classifying Image :(")
+}
+
+function clearAll(){
+  $("#currentImageHolder").hide();
+  currentImage.src = '#';
+  $("#genTitle").text( " " );
+  $("#genPar").text( " " );
+
+  for (var i = 1; i < 10; i++){
+    var img = document.getElementById('photo'+i);
+    img.src = 'img/noImage.jpg'
+  }
+  id = 1;
+}
+
+function removePhoto(){
+  $("#currentImageHolder").hide();
+  currentImage.src = '#';
+  if (id > 1){
+    id = id - 1
+  }
+  document.getElementById('photo'+id).src = 'img/noImage.jpg'
 }
