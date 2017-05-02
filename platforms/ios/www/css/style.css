@@ -25,10 +25,13 @@ body{
 }
 
 button{
-  font-family: 'Helvetica';
-  margin: 10px;
+  font-family: 'bentonsans-regular';
+  margin: 10px 10px 0px 0px;
   padding: 10px;
   border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  color: white;
 }
 
 h3{
@@ -40,10 +43,18 @@ h4, h6{
   font-family: 'Helvetica';
 }
 
-p{
-  font-family: 'Helvetica';
-  text-align: left;
+h5{
+  font-family: 'bentonsans-regular';
   display: inline;
+  color:white;
+  font-size:15px
+}
+
+p{
+  font-family: monospace;
+  display: inline;
+  font-size: 12px;
+  text-align: left;
 }
 
 /*
@@ -59,7 +70,7 @@ ids
 }
 
 #submit{
-  background: #27a26a;
+  background: #54d778;
   border: none;
   color: white;
   max-width: 100px;
@@ -76,11 +87,16 @@ ids
 }
 
 #takePhoto{
-  background: rgba(247, 247, 247, 0.94)
+  background-color: rgba(28, 28, 28, 0.94)
 }
 
 #uploadPhoto{
-  background: rgba(247, 247, 247, 0.94)
+  background-color: rgba(28, 28, 28, 0.94)
+}
+
+#genTitle{
+  text-align: center;
+  text-decoration: underline;
 }
 
 #getPhoto{
@@ -92,9 +108,10 @@ ids
 }
 
 #usePhoto{
-  background: #4ac78e;
+  background: rgba(0, 0, 0, 0.31);
   color: white;
   width: 90px;
+  padding: 10px 6px;
 }
 
 #currentImageHolder{
@@ -103,26 +120,30 @@ ids
   margin-right: auto;
   left: 0;
   right: 0;
-  top: 19vh;
-  padding: 10px;
+  top: 18vh;
   height: 200px;
-  background: rgba(171, 168, 168, 0.17);
 }
 
 #currentImage{
   display: block;
-  max-width: 200px;
-  max-height: 175px;
-  text-align: center;
+  max-width: 230px;
+  max-height: 195px;
   margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.35), 0 6px 20px 0 rgba(0, 0, 0, 0.42);
+  text-align: center;
 }
 
 #result{
-  margin:25px;
+  margin: 35px 25px 25px 25px;
+  height: 390px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: left;
+  padding: 0.3px 30px 30px 30px;
 }
 
 #imagesGrid{
   text-align: center;
+  margin: 30px 0px 0px 0px;
 }
 
 #removePhoto{
@@ -143,23 +164,73 @@ ids
   margin-right: auto;
   left: 0;
   right: 0;
-  top: 64vh;
+  top: 19vh;
   width: 30px;
+}
+
+#menu{
+  position: absolute;
+}
+
+#menu img{
+  max-width: 30px;
+}
+
+#getIp{
+  background: rgba(0, 0, 0, 1);
+  padding: 10px;
+  display: inline-block;
+  margin-top: 50px;
+  position: absolute;
+  top: 150px;
+  left: 55px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 999;
+}
+
+#ip{
+  background: #ecebeb;
+  margin: 10px;
+  border: none;
+  padding: 10px;
+}
+
+#submitIp{
+  background: #ffffff;
+  border: none;
+  padding: 10px;
+  color: black;
+  border-radius: 0px;
+}
+
+#status{
+  position: absolute;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background: #a0a0a0;
+  right: 20px;
+  top: 40px;
 }
 /*
 Classes
 */
-.element{
-  display: inline-block;
-}
 
 .element{
   width: 100px;
   height: 75px;
   display: inline-block;
   overflow: hidden;
+  position: relative;
+  border: 1px solid #f3f3f3;
 }
 
 .element img {
-    width: 100%;
+  width: 100%;
+  position: absolute;
+  top: -9999px;
+  bottom: -9999px;
+  left: -9999px;
+  right: -9999px;
+  margin: auto;
 }

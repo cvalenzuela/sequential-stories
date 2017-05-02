@@ -9,12 +9,35 @@ cvalenzuela
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var imageURL;
-var ip = 'http://172.16.220.175:8080/'
+var ip = '0'
 var upload = ip + "upload";
 var id = 1;
 var currentImageHolder = null;
 var currentImage = null;
 var photo = null;
+var readyToUpload = false;
+
+// getIp
+$("#menu").click(function() {
+  $("#getIp").show();
+});
+
+$("#submitIp").click(function() {
+  ip = 'http://' +  $('#ip').val() + ':8080/';
+  upload = ip + "upload";
+  $("#getIp").hide();
+  console.log('submit to ip: ' + ip)
+  $.ajax({
+    type: "GET",
+    url: ip,
+    success: function(msg){
+      $("#status").css("background-color", "#2dc377");
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      $("#status").css("background-color", "#c32d2d");
+    }
+  });
+});
 
 // on device ready
 function onDeviceReady() {
@@ -22,6 +45,10 @@ function onDeviceReady() {
   currentImage = document.getElementById('currentImage');
   $("#currentImageHolder").hide();
   $("#loading").hide();
+  $("#getIp").hide();
+  for (var i = 7; i < 10; i++){
+    $("#element"+i).css("display", "none");
+  }
 }
 
 // Use camara
@@ -48,50 +75,64 @@ function cameraSuccess(imageData) {
   imageURL = imageData;
   $("#currentImageHolder").show();
   currentImage.src = imageData;
+  $("#usePhoto").css("background", "#4ac78e");
+  readyToUpload = true;
 }
 
 // Upload image to server
 function uploadPhoto() {
   // Uncomment this for lstm version
   // lstm();
-  $("#loading").show();
-  console.log('Upload Image')
-  $("#currentImageHolder").hide();
-  currentImage.src = '#';
-  photo = document.getElementById('photo'+id);
-  photo.src = imageURL;
-  // Increase the current image/text
-  (id < 10) ? id++ : id = 0;
+  if(readyToUpload){
+    readyToUpload = false;
+    $("#loading").show();
+    $("#usePhoto").css("background", "rgba(0, 0, 0, 0.31)");
+    console.log('Upload Image')
+    $("#currentImageHolder").hide();
+    currentImage.src = '#';
+    photo = document.getElementById('photo'+id);
+    photo.src = imageURL;
+    $("#element"+id).css("display", "inline-block");
 
-  var options = new FileUploadOptions();
-  options.fileKey="file";
-  options.fileName=imageURL.substr(imageURL.lastIndexOf('/')+1);
-  options.mimeType="image/jpeg";
+    // Increase the current image/text
+    (id < 10) ? id++ : id = 0;
 
-  var params = new Object();
-  params.name = id-1;
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=imageURL.substr(imageURL.lastIndexOf('/')+1);
+    options.mimeType="image/jpeg";
 
-  options.params = params;
-  options.chunkedMode = true;
+    var params = new Object();
+    params.name = id-1;
 
-  var ft = new FileTransfer();
-  ft.upload(imageURL, upload, win, fail, options);
+    options.params = params;
+    options.chunkedMode = true;
+
+    var ft = new FileTransfer();
+    ft.upload(imageURL, upload, win, fail, options);
+  }
+  else{
+    navigator.notification.alert("Please Select an Image to Upload", function(){
+      $("#loading").hide();
+    }, "No Image", "Got it!")
+  }
 }
 
 // clear all current images
 function clearAll(){
   $("#currentImageHolder").hide();
   currentImage.src = '#';
+  $("#loading").hide();
 
   for (var i = 1; i < 10; i++){
     var img = document.getElementById('photo'+i);
-    img.src = 'img/noImage.jpg'
+    img.src = '#'
     $("#genPar"+i).text( " " );
   }
+  $("#genTitle").text( " " );
 
-  for (var i = 1; i < 10; i++){
-    var img = document.getElementById('photo'+i);
-    img.src = 'img/noImage.jpg'
+  for (var i = 7; i < 10; i++){
+    $("#element"+i).css("display", "none");
   }
   id = 1;
 }
@@ -110,9 +151,10 @@ function removePhoto(){
 function win(r) {
   $("#loading").hide();
   var response =  JSON.parse(r.response);
-  console.log(r)
-  console.log("File Uploaded " + response.status);
-  //$("#genTitle").text(response.term);
+  if(id-1 == 1){
+    $("#genTitle").text(response.title);
+  }
+
   Typed.new('#genPar'+(id-1), {
     strings: [response.text],
     typeSpeed: 0,
@@ -122,11 +164,17 @@ function win(r) {
 }
 
 function fail(error) {
-  alert("An error has occurred: Code = " = error.code);
+  navigator.notification.alert("Please add a valid IP address", function(){
+    $("#loading").hide();
+  }, "An Error has Occurred", "Got it!")
+  //alert("An error has occurred: Code = " + error.code);
 }
 
 function cameraError(){
-  alert("Error Classifying Image :(")
+  // navigator.notification.alert("Couldn't classify this image", function(){
+  //   $("#loading").hide();
+  // }, "An Error has Occurred", "Got it!")
+  //alert("Error Classifying Image :(")
 }
 
 // this function is just for the lstm server version
@@ -138,7 +186,7 @@ function lstm(){
   }
   photo.src = "data:image/jpeg;base64," + imageURL;
   //send the data
-  $.post(upload, "data", function(response) {
+  $.post(upload, data, function(response) {
   //  $("#genTitle").text(response.term);
     Typed.new('#genPar', {
       strings: [response.text],

@@ -11,54 +11,60 @@
 </head>
 <body>
 
-
   <div id="title">
+    <div id="menu"><img src="img/menu.png" /></div>
     <h3>Sequential Story</h3>
+    <div id="status"></div>
   </div>
 
   <div id="getPhoto">
-    <button id="takePhoto" onclick="useCamara();">Take New</button>
+    <button id="takePhoto" onclick="useCamara();">Camera</button>
     <button id="uploadPhoto" onclick="getImage();">Use Existing</button>
+    <button id="usePhoto" onclick="uploadPhoto();">Add to Story</button>
+    <button id="clearAll" onclick="clearAll();">Clear</button>
+  </div>
+
+  <!-- <div id="buttons">
+    <button id="removePhoto" onclick="removePhoto();">Remove</button>
+  </div> -->
+
+  <div id="getIp">
+      <h5>IP:</h5><input type="text" name="ip" value="" id="ip">
+      <input type="submit" value="Submit" id="submitIp">
   </div>
 
   <div id="imagesGrid" class="">
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage"/ id="photo1">
+    <div class="element" id="element1">
+      <img src="#" class="gridImage"/ id="photo1">
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo2"/>
+    <div class="element" id="element2">
+      <img src="#" class="gridImage" id="photo2"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo3"/>
+    <div class="element" id="element3">
+      <img src="#" class="gridImage" id="photo3"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo4"/>
+    <div class="element" id="element4">
+      <img src="#" class="gridImage" id="photo4"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo5"/>
+    <div class="element" id="element5">
+      <img src="#" class="gridImage" id="photo5"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo6"/>
+    <div class="element" id="element6">
+      <img src="#" class="gridImage" id="photo6"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo7"/>
+    <div class="element" id="element7">
+      <img src="#" class="gridImage" id="photo7"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage"id="photo8"/>
+    <div class="element" id="element8">
+      <img src="#" class="gridImage"id="photo8"/>
     </div>
-    <div class="element">
-      <img src="img/noImage.jpg" class="gridImage" id="photo9"/>
+    <div class="element" id="element9">
+      <img src="#" class="gridImage" id="photo9"/>
     </div>
   </div>
 
   <div id="currentImageHolder">
-    <img src="" id="currentImage"/>
-  </div>
-
-  <div id="buttons">
-    <button id="usePhoto" onclick="uploadPhoto();">Add</button>
-    <button id="removePhoto" onclick="removePhoto();">Remove</button>
-    <button id="clearAll" onclick="clearAll();">Clear All</button>
+    <img src="#" id="currentImage"/>
   </div>
 
   <div id="loading">
@@ -79,8 +85,6 @@
     <p id="genPar8"></p>
     <p id="genPar9"></p>
   </div>
-
-
 
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/script.js"></script>

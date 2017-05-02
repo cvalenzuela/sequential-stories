@@ -12,7 +12,7 @@ from random import choice
 
 # Initialize the Flask application
 app = Flask(__name__)
-ip = '172.16.220.175'
+ip = '172.16.223.170'
 
 # path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'uploads/'
@@ -25,7 +25,6 @@ def allowed_file(filename):
 
 @app.route("/")
 def hello():
-    print(current_text)
     return "Server Running..."
 
 @app.route('/upload', methods=['POST'])
@@ -44,25 +43,33 @@ def upload():
         result = str(p,'utf-8')
         result = result.split("0)")[1].split("(")[0].strip().split(".")[0].strip()
         if (name == '1'):
+            title = " ".join(result.split()[:4]).title()
             result = choice(start) + " " + result # It all began when a woman standing on a beach with a dog
         elif (name == '2'):
             result = " " + choice(verbs["verbs"])["past"] + " " + result + "." # arranged a group of people sitting around a table.
+            title = 'none'
         elif (name == '3'):
             result = " " + choice(continuation) + " " + result  # But for a brief moment, a small bird sitting on top of a wooden bench
+            title = 'none'
         elif (name == '4'):
             result = " " + choice(verbs["verbs"])["past"] + " " + result + "." # blinked a man sitting on top of a wooden bench next to a tree.
+            title = 'none'
         elif (name == '5'):
             result = " " + choice(restart) + " " + result # Since then, a group of people sitting around a table eating food
+            title = 'none'
         elif (name == '6'):
             result = " " + choice(verbs["verbs"])["past"] + " " + result + "." # battled a close up of a person holding a pair of scissors.
+            title = 'none'
         elif (name == '7'):
             result = " " + choice(end) + " " + result  # From then on, a group of people standing on top of a sandy beach
+            title = 'none'
         elif (name == '8'):
             result = " " + choice(verbs["verbs"])["past"] + " " + result + "." # haunted a close up of a television set with a keyboard.
+            title = 'none'
         elif (name == '9'):
             result = " " + choice(finish) + " " + result + "." # Now, a bike is parked next to a fence.
-        print(result)
-        return jsonify(status="got text", text=result)
+            title = 'none'
+        return jsonify(status="got text", text=result, title=title)
 
 if __name__ == "__main__":
     app.run(host=ip, port=8080, debug=False)

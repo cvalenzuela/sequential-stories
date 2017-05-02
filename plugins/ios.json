@@ -7,21 +7,24 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-camera": {
-            "CAMERA_USAGE_DESCRIPTION": " ",
-            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.sequential.cvalenzuela"
-        },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.sequential.cvalenzuela"
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.sequential.cvalenzuela"
         },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.sequential.cvalenzuela"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.sequential.cvalenzuela"
         },
-        "cordova-plugin-statusbar": {
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.sequential.cvalenzuela"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.sequential.cvalenzuela"
         }
     },
