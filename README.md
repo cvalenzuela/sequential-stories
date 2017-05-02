@@ -6,7 +6,7 @@ im2txt is a model for Tensorflow developed by Google DeepMind that takes an inpu
 
 # Setup
 
-This app queries a local server. Therefore, it's necessary to change the current ip in `server_im2txt` and in `www/js/script.js` to the assigned server's ip and then run `cordova prepare ios`
+This app queries a local server. Therefore, it is necessary to change the current IP in the `server_im2txt` file. That IP need to match the IP setup in the configuration button from the app.
 
 To install im2txt and its dependencies, I followed [Edouard Fouché](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/) setup and used the same pre trained model described in his instructions. The only change was that in line 49 in `im2txt/im2txt/inference_utils/vocabulary.py` I <b>didn't</b> change this:
 
@@ -14,7 +14,7 @@ To install im2txt and its dependencies, I followed [Edouard Fouché](https://edo
 reverse_vocab = [line.split()[0] for line in reverse_vocab] # to:
 reverse_vocab = [eval(line.split()[0]).decode() for line in reverse_vocab]
 ```
-Running a MacBook Pro from 2014 it takes around 8 seconds to caption the images.
+Running a MacBook Pro from 2014 it takes around 7 seconds to caption an image.
 
 Dependencies:
  - Bazel
@@ -26,6 +26,7 @@ Dependencies:
 # Versions
 
 The file `server_im2txt` runs the im2txt model on every request from to the `/upload` route and returns a string with a sentence for the story.
+The app loads an image to the `/upload` folder.
 
 The file `server_lstm` runs a classification model in keras and then a LSTM network trained on the 25 most download books from the Gutenberg Project. This was the first approach to the app and it's still a WIP.
 
@@ -36,9 +37,8 @@ The file `server_lstm` runs a classification model in keras and then a LSTM netw
 ![demo](uploads/demo2.jpg)
 
 
-
 # Links
-- Orignal Model: [Show and Tell: A Neural Image Caption Generator](https://github.com/tensorflow/models/tree/master/im2txt)
+- Original Model: [Show and Tell: A Neural Image Caption Generator](https://github.com/tensorflow/models/tree/master/im2txt)
 - Paper: [Show and Tell: Lessons learned from the 2015 MSCOCO Image Captioning Challenge](https://arxiv.org/abs/1609.06647)
 - Configuration: [Tensorflow - im2txt](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/)
 
