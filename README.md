@@ -1,6 +1,6 @@
 #  Sequential Stories
 
-im2txt is a model for Tensorflow, developed by Google DeepMind. that takes an input as image and creates a series of captions. This experimental iOS app uses this feature to generate a series of captions and create a story.
+The <i>Show and Tell</i> model is a image-to-text model for Tensorflow, developed by Google DeepMind and based on this [paper](https://arxiv.org/abs/1609.06647), that takes an input and learns how to describe the content of images. This experimental iOS app uses this feature to generate a series of captions and create a story.
 
 Example using stills from the 'The Gran Budapest Hotel' by Wes Anderson:
 
