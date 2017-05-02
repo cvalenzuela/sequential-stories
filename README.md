@@ -1,6 +1,6 @@
 #  Sequential Stories
 
-im2txt is a model for Tensorflow developed by Google DeepMind that takes an input as image and creates a series of captions. This experimental iOS app uses this feature to generate a series of captions and create a story.
+im2txt is a model for Tensorflow, developed by Google DeepMind. that takes an input as image and creates a series of captions. This experimental iOS app uses this feature to generate a series of captions and create a story.
 
 ![demo](uploads/demo.jpg)
 
@@ -22,6 +22,8 @@ Dependencies:
  - NumPy
  - Natural Language Toolkit (NLTK)
  - [Checkpoint](https://drive.google.com/file/d/0B_qCJ40uBfjEWVItOTdyNUFOMzg/view)
+
+To run the app, open the `Sequential.xcodeproj` file located in `platforms/ios/` in Xcode and upload to an Iphone. 
 
 # Versions
 
