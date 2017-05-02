@@ -36,11 +36,9 @@ The file `server_lstm` runs a classification model in keras and then a LSTM netw
 
 # Outputs
 
-![demo](uploads/demo.jpg)
+![demo](uploads/demo4.jpg)
 
-![demo](uploads/demo3.jpg)
 
-![demo](uploads/demo2.jpg)
 
 
 # Links
