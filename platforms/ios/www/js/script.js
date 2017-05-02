@@ -9,7 +9,7 @@ cvalenzuela
 document.addEventListener("deviceready", onDeviceReady, false);
 
 var imageURL;
-var ip = '0'
+var ip = '172.16.223.170';
 var upload = ip + "upload";
 var id = 1;
 var currentImageHolder = null;
@@ -32,9 +32,11 @@ $("#submitIp").click(function() {
     url: ip,
     success: function(msg){
       $("#status").css("background-color", "#2dc377");
+      readyToUpload = true;
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
       $("#status").css("background-color", "#c32d2d");
+      readyToUpload = false;
     }
   });
 });
@@ -49,6 +51,18 @@ function onDeviceReady() {
   for (var i = 7; i < 10; i++){
     $("#element"+i).css("display", "none");
   }
+  ip = 'http://' +  ip + ':8080/';
+  $.ajax({
+    type: "GET",
+    url: ip,
+    success: function(msg){
+      $("#status").css("background-color", "#2dc377");
+      upload = ip + "upload";
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown) {
+      $("#status").css("background-color", "#c32d2d");
+    }
+  });
 }
 
 // Use camara
@@ -74,6 +88,8 @@ function cameraSuccess(imageData) {
   console.log('Got image')
   imageURL = imageData;
   $("#currentImageHolder").show();
+  $("#currentImageHolder").removeClass("fadeOutDown");
+  $("#currentImageHolder").addClass("fadeInDown");
   currentImage.src = imageData;
   $("#usePhoto").css("background", "#4ac78e");
   readyToUpload = true;
@@ -84,19 +100,23 @@ function uploadPhoto() {
   // Uncomment this for lstm version
   // lstm();
   if(readyToUpload){
+    console.log('Upload Image')
+
     readyToUpload = false;
+    $("#currentImageHolder").addClass("fadeOutDown");
+    //$("#currentImageHolder").hide();
     $("#loading").show();
     $("#usePhoto").css("background", "rgba(0, 0, 0, 0.31)");
-    console.log('Upload Image')
-    $("#currentImageHolder").hide();
-    currentImage.src = '#';
+    $("#element"+id).css("display", "inline-block");
+    //currentImage.src = '#';
+    $("#photo"+id).addClass("fadeInUp");
     photo = document.getElementById('photo'+id);
     photo.src = imageURL;
-    $("#element"+id).css("display", "inline-block");
 
     // Increase the current image/text
     (id < 10) ? id++ : id = 0;
 
+    // Upload to server
     var options = new FileUploadOptions();
     options.fileKey="file";
     options.fileName=imageURL.substr(imageURL.lastIndexOf('/')+1);
@@ -120,14 +140,16 @@ function uploadPhoto() {
 
 // clear all current images
 function clearAll(){
-  $("#currentImageHolder").hide();
-  currentImage.src = '#';
+  $("#currentImageHolder").addClass("fadeOutDown");
+  $("#usePhoto").css("background", "rgba(0, 0, 0, 0.31)");
+  //currentImage.src = '#';
   $("#loading").hide();
 
   for (var i = 1; i < 10; i++){
     var img = document.getElementById('photo'+i);
     img.src = '#'
     $("#genPar"+i).text( " " );
+    $("#photo"+i).removeClass("fadeInUp");
   }
   $("#genTitle").text( " " );
 
@@ -150,6 +172,7 @@ function removePhoto(){
 // Server response after sending image
 function win(r) {
   $("#loading").hide();
+  $("currentImage").removeClass("fadeOutDown");
   var response =  JSON.parse(r.response);
   if(id-1 == 1){
     $("#genTitle").text(response.title);

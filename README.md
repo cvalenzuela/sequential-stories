@@ -31,7 +31,10 @@ The file `server_lstm` runs a classification model in keras and then a LSTM netw
 
 # Outputs
 
-TODO
+![demo](uploads/demo3.jpg)
+
+![demo](uploads/demo2.jpg)
+
 
 
 # Links
@@ -41,6 +44,6 @@ TODO
 
 # TODO
 
-- Configure IP from app.
+-  ~~Configure IP from app.~~
 - Create Reacte Native version?
 - Add more nlp to the output or maybe add the lstm version to it?

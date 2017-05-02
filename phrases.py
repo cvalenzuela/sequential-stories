@@ -1,18 +1,26 @@
 start = [
     'It all began when',
     'Everything changed when',
-    'Once upon a time',
+    'All of a sudden',
+    'Everything was quiet until',
+    'Completely out of the blue',
+    'History will never forget',
+    'This story starts with',
+    'At the beginning there was'
 ]
 
 continuation = [
     'Next to',
     'But for a brief moment,',
-    'But nobody thought of'
+    'But nobody thought of',
+    "It wasn't until",
+    'Meanwhile,',
+    'This made',
 ]
 
 restart = [
-    'Since then,',
-    'After that,'
+    'Since then',
+    'After that'
 ]
 
 end = [
@@ -22,5 +30,7 @@ end = [
 
 finish = [
     'Now,',
-    'So,'
+    'So,',
+    'Finally,',
+    'In the end'
 ]

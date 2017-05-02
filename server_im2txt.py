@@ -43,7 +43,7 @@ def upload():
         result = str(p,'utf-8')
         result = result.split("0)")[1].split("(")[0].strip().split(".")[0].strip()
         if (name == '1'):
-            title = " ".join(result.split()[:4]).title()
+            title = " ".join(result.split()[:3]).title()
             result = choice(start) + " " + result # It all began when a woman standing on a beach with a dog
         elif (name == '2'):
             result = " " + choice(verbs["verbs"])["past"] + " " + result + "." # arranged a group of people sitting around a table.
