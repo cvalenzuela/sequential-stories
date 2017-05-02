@@ -12,7 +12,7 @@ from random import choice
 
 # Initialize the Flask application
 app = Flask(__name__)
-ip = '172.16.223.170'
+ip = '172.16.218.254'
 
 # path to the upload directory
 app.config['UPLOAD_FOLDER'] = 'uploads/'

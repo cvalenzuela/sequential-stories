@@ -2,7 +2,9 @@
 
 im2txt is a model for Tensorflow, developed by Google DeepMind. that takes an input as image and creates a series of captions. This experimental iOS app uses this feature to generate a series of captions and create a story.
 
-![demo](uploads/demo.jpg)
+Example using stills from the 'The Gran Budapest Hotel' by Wes Anderson:
+
+![demo](uploads/demo0.jpg)
 
 # Setup
 
@@ -23,7 +25,7 @@ Dependencies:
  - Natural Language Toolkit (NLTK)
  - [Checkpoint](https://drive.google.com/file/d/0B_qCJ40uBfjEWVItOTdyNUFOMzg/view)
 
-To run the app, open the `Sequential.xcodeproj` file located in `platforms/ios/` in Xcode and upload to an Iphone. 
+To run the app, open the `Sequential.xcodeproj` file located in `platforms/ios/` in Xcode and upload to an Iphone.
 
 # Versions
 
@@ -33,6 +35,8 @@ The app loads an image to the `/upload` folder.
 The file `server_lstm` runs a classification model in keras and then a LSTM network trained on the 25 most download books from the Gutenberg Project. This was the first approach to the app and it's still a WIP.
 
 # Outputs
+
+![demo](uploads/demo1.jpg)
 
 ![demo](uploads/demo3.jpg)
 
