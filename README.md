@@ -8,19 +8,19 @@ Example using stills from the 'The Gran Budapest Hotel' by Wes Anderson:
 
 # Setup
 
-1. Download or clone this repo.
-2. Install the app located in `platforms/ios` in Xcode. You can also run `cordova plaform add ios` from the root and then `cordova prepare ios` and then upload. ([Install Cordova first](https://cordova.apache.org/))
-3. Connect your phone to a Wifi network. Your computer should be connected to the same network.
-4. Open the file `server_im2txt.py` and change line 15: `ip = '172.16.220.255'` to match the ip assigned by the network. (To know your ip type `ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'` in OSX)
-5. Run `python server_im2txt.py`
-6. Open the app, and click the top left icon. Enter the same IP address from before. A green light should turn on the right top corner.
-
-To install im2txt and its dependencies, follow [Edouard Fouché](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/) setup and used the same pre trained model described in his instructions. The only change was that in line 49 in `im2txt/im2txt/inference_utils/vocabulary.py` I <b>didn't</b> change this:
-
+1. Install im2txt and its dependencies. Follow [Edouard Fouché](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/) setup and used the same pre trained model described in his instructions. The only change was that in line 49 in `im2txt/im2txt/inference_utils/vocabulary.py` I <b>didn't</b> change this:
 ```
 reverse_vocab = [line.split()[0] for line in reverse_vocab] # to:
 reverse_vocab = [eval(line.split()[0]).decode() for line in reverse_vocab]
 ```
+
+2. Download or clone this repo.
+3. Install the app located in `platforms/ios` in Xcode. You can also run `cordova plaform add ios` from the root and then `cordova prepare ios` and then upload. ([Install Cordova first](https://cordova.apache.org/))
+4. Connect your phone to a Wifi network. Your computer should be connected to the same network.
+5. Open the file `server_im2txt.py` and change line 15: `ip = '172.16.220.255'` to match the ip assigned by the network. (To know your ip type `ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'` in OSX)
+6. Run `python server_im2txt.py`
+7. Open the app, and click the top left icon. Enter the same IP address from before. A green light should turn on the right top corner.
+
 Running a MacBook Pro from 2014 it takes around 7 seconds to caption an image.
 
 Dependencies:
