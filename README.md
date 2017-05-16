@@ -8,9 +8,14 @@ Example using stills from the 'The Gran Budapest Hotel' by Wes Anderson:
 
 # Setup
 
-This app queries a local server. Therefore, it is necessary to change the current IP in the `server_im2txt` file. That IP need to match the IP setup in the configuration button from the app.
+1. Download or clone this repo.
+2. Install the app located in `platforms/ios` in Xcode. You can also run `cordova plaform add ios` from the root and then `cordova prepare ios` and then upload. ([Install Cordova first](https://cordova.apache.org/))
+3. Connect your phone to a Wifi network. Your computer should be connected to the same network.
+4. Open the file `server_im2txt.py` and change line 15: `ip = '172.16.220.255'` to match the ip assigned by the network. (To know your ip type `ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}'` in OSX)
+5. Run `python server_im2txt.py`
+6. Open the app, and click the top left icon. Enter the same IP address from before. A green light should turn on the right top corner.
 
-To install im2txt and its dependencies, I followed [Edouard Fouché](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/) setup and used the same pre trained model described in his instructions. The only change was that in line 49 in `im2txt/im2txt/inference_utils/vocabulary.py` I <b>didn't</b> change this:
+To install im2txt and its dependencies, follow [Edouard Fouché](https://edouardfouche.com/Fun-with-Tensorflow-im2txt/) setup and used the same pre trained model described in his instructions. The only change was that in line 49 in `im2txt/im2txt/inference_utils/vocabulary.py` I <b>didn't</b> change this:
 
 ```
 reverse_vocab = [line.split()[0] for line in reverse_vocab] # to:
@@ -24,8 +29,6 @@ Dependencies:
  - NumPy
  - Natural Language Toolkit (NLTK)
  - [Checkpoint](https://drive.google.com/file/d/0B_qCJ40uBfjEWVItOTdyNUFOMzg/view)
-
-To run the app, open the `Sequential.xcodeproj` file located in `platforms/ios/` in Xcode and upload to an Iphone.
 
 # Versions
 
@@ -41,7 +44,6 @@ The file `server_lstm` runs a classification model in keras and then a LSTM netw
 ### Interaction
 
 ![demo](uploads/clip.gif)
-
 
 # Links
 - Original Model: [Show and Tell: A Neural Image Caption Generator](https://github.com/tensorflow/models/tree/master/im2txt)
